@@ -3,18 +3,100 @@
   <h1>
     Welcome to {{ title }}!
   </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
 </div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://github.com/angular/angular-cli/wiki">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
+  <div class="keg-table">
+    <div class="row">
+      <div class="col">
+        <h2>Name</h2>
+      </div>
+      <div class="col">
+        <h2>Brand</h2>
+      </div>
+      <div class="col">
+        <h2>Price</h2>
+      </div>
+      <div class="col">
+        <h2>ABV</h2>
+      </div>
+      <div class="col">
+        <h2>Pints Left</h2>
+      </div>
+      <div class="col">
+        <h2>Edit</h2>
+      </div>
+    </div>
+    <div *ngFor="let keg of kegs" class="row">
+      <div class="col">
+        <h2><a href="#" (click)="startSale(keg)">{{keg.name}}</a></h2>
+      </div>
+      <div class="col">
+        <h2>{{keg.brand}}</h2>
+      </div>
+      <div class="col">
+        <h2>${{keg.price}}</h2>
+      </div>
+      <div class="col">
+        <h2>{{keg.alcContent}}%</h2>
+      </div>
+      <div class="col">
+        <h2>{{keg.pintsLeft}}</h2>
+      </div>
+      <div class="col">
+        <button type="button" class="btn btn-warning" (click)="editKeg(keg)">Edit {{keg.name}}</button>
+      </div>
+      <div class="row" *ngIf="sale && sale === keg">
+        <button class="btn btn-secondary" type="button" name="button">1 Pint</button>
+        <button class="btn btn-secondary" type="button" name="button">2 Pints</button>
+        <button class="btn btn-secondary" type="button" name="button">3 Pints</button>
+      </div>
+    </div>
 
+  </div>
+  <button type="button" class="btn btn-primary"(click)="addKeg()">Add Keg</button>
+  <div *ngIf="selectedKeg">
+    <hr>
+    <form>
+      <h3>Edit {{selectedKeg.name}}</h3>
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" name="name" class="form-control" [(ngModel)]=selectedKeg.name>
+      </div>
+      <div class="form-group">
+        <label for="brand">Brand</label>
+        <input type="text" name="brand" class="form-control" [(ngModel)]=selectedKeg.brand>
+      </div>
+      <div class="form-group">
+        <label for="price">Price</label>
+        <input type="text" name="price" class="form-control" [(ngModel)]=selectedKeg.price>
+      </div>
+      <div class="form-group">
+        <label for="ABV">ABV</label>
+        <input type="text" name="alcContent" class="form-control" [(ngModel)]=selectedKeg.alcContent>
+      </div>
+      <button (click)="endEdit()">Done!</button>
+    </form>
+  </div>
+
+  <div *ngIf="newKeg">
+    <form>
+      <h3>Add a new keg</h3>
+      <div class="form-group">
+        <label for="newName">Name</label>
+        <input type="text" name="newName" class="form-control" [(ngModel)]=newName>
+      </div>
+      <div class="form-group">
+        <label for="newBrand">Brand</label>
+        <input type="text" name="newBrand" class="form-control" [(ngModel)]=newBrand>
+      </div>
+      <div class="form-group">
+        <label for="newPrice">Price</label>
+        <input type="text" name="newPrice" class="form-control" [(ngModel)]=newPrice>
+      </div>
+      <div class="form-group">
+        <label for="newABV">ABV</label>
+        <input type="text" name="newABV" class="form-control" [(ngModel)]=newABV>
+      </div>
+      <button type="button" (click)="addNewKeg(newName, newBrand, newPrice, newABV)">Done!</button>
+    </form>
+
+  </div>
