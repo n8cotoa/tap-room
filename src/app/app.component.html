@@ -16,7 +16,7 @@
         <h2>Price</h2>
       </div>
       <div class="col">
-        <h2>ABV</h2>
+        <h2 (click)="sortABV()">ABV</h2>
       </div>
       <div class="col">
         <h2>Pints Left</h2>
@@ -33,21 +33,21 @@
         <h2>{{keg.brand}}</h2>
       </div>
       <div class="col">
-        <h2>${{keg.price}}</h2>
+        <h2 [class]="priceColor(keg)">${{keg.price}}</h2>
       </div>
       <div class="col">
         <h2>{{keg.alcContent}}%</h2>
       </div>
       <div class="col">
-        <h2>{{keg.pintsLeft}}</h2>
+        <h2 [class]="pintsRunningOut(keg)">{{keg.pintsLeft}}</h2>
       </div>
       <div class="col">
         <button type="button" class="btn btn-warning" (click)="editKeg(keg)">Edit {{keg.name}}</button>
       </div>
       <div class="row" *ngIf="sale && sale === keg">
-        <button class="btn btn-secondary" type="button" name="button">1 Pint</button>
-        <button class="btn btn-secondary" type="button" name="button">2 Pints</button>
-        <button class="btn btn-secondary" type="button" name="button">3 Pints</button>
+        <button (click)="sellPint(keg, 1)" class="btn btn-secondary" type="button" name="button" value="1">1 Pint</button>
+        <button (click)="sellPint(keg, 2)" class="btn btn-secondary" type="button" name="button" value="2">2 Pints</button>
+        <button (click)="sellPint(keg, 3)" class="btn btn-secondary" type="button" name="button" value="3">3 Pints</button>
       </div>
     </div>
 
@@ -73,7 +73,7 @@
         <label for="ABV">ABV</label>
         <input type="text" name="alcContent" class="form-control" [(ngModel)]=selectedKeg.alcContent>
       </div>
-      <button (click)="endEdit()">Done!</button>
+      <button type="button" (click)="endEdit()">Done!</button>
     </form>
   </div>
 

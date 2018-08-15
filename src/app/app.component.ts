@@ -10,7 +10,7 @@ export class AppComponent {
   title = 'I\'d Tap That';
 
   kegs: Keg[] = [
-    new Keg('Kegger', 'Keg & Friends', 3.50, 4.5),
+    new Keg('Kegger', 'Keg & Friends', 3.50, 8.5),
     new Keg('Hardest Cider', 'Keg Land', 4.50, 7.5),
     new Keg('Reds Pale Ale', 'Are You Keggers?', 5.50, 8.5)
   ];
@@ -56,4 +56,41 @@ export class AppComponent {
     }
   }
 
+  sellPint(keg: Keg, pints) {
+    keg.pintsLeft -= pints
+  }
+
+  pintsRunningOut(keg){
+    if (keg.pintsLeft <= 10) {
+      return "pintDanger"
+    } else if (keg.pintsLeft <= 50) {
+      return "pintWarning"
+    } else if (keg.pintsLeft <= 100) {
+      return "pintOkay"
+    } else {
+      return "pintPlenty"
+    }
+  }
+
+  priceColor(keg) {
+    if (keg.price <= 2) {
+      return "pintPlenty";
+    } else if (keg.price <= 4) {
+      return "pintOkay";
+    } else {
+      return "pintWarning";
+    }
+  }
+
+  sorted = null;
+
+  sortABV(){
+    if (this.sorted == null) {
+      this.kegs.sort(function(a, b){return a.alcContent - b.alcContent});
+      this.sorted = "DESC";
+    } else {
+      this.kegs.sort(function(a, b){return b.alcContent -  a.alcContent});
+      this.sorted = null;
+    }
+  }
 }
