@@ -8,10 +8,10 @@ export class KegService {
   kegs: FirebaseListObservable<any[]>;
 
   constructor(private database: AngularFireDatabase) {
-    this.kegs = database.list('kegs')
+    this.kegs = database.list('kegs');
   }
 
-  getKegs(){
+  getKegs() {
     return this.kegs;
   }
 

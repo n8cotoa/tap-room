@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { KegService } from '../keg.service'
+import { KegService } from '../keg.service';
 import { Keg } from '../../models/keg.model';
 import { Router } from '@angular/router';
 import { FirebaseListObservable } from 'angularfire2/database';
@@ -12,19 +12,20 @@ import { FirebaseListObservable } from 'angularfire2/database';
 })
 export class TapMenuComponent implements OnInit {
 
+  kegs: FirebaseListObservable<any[]>;
+  selectedKeg = null;
+  newKeg = null;
+  sale = null;
+
   constructor(private router: Router, private kegService: KegService) { }
 
   ngOnInit() {
     this.kegs = this.kegService.getKegs();
   }
 
-  kegs: FirebaseListObservable<any[]>;
 
-  selectedKeg = null;
 
-  newKeg = null;
 
-  sale = null;
 
   editKeg(keg: Keg) {
     if (this.selectedKeg === keg) {
@@ -42,11 +43,11 @@ export class TapMenuComponent implements OnInit {
     this.newKeg = true;
   }
 
-  addNewKeg(name: string, brand: string, price: number, alcContent:number){
+  addNewKeg(name: string, brand: string, price: number, alcContent: number) {
     if (name === undefined || brand === undefined || price === undefined || alcContent === undefined) {
       this.newKeg = null;
     } else {
-      let keg: Keg = new Keg(name, brand, price, alcContent);
+      const keg: Keg = new Keg(name, brand, price, alcContent);
       this.kegService.addKeg(keg);
       this.newKeg = null;
     }
@@ -61,28 +62,28 @@ export class TapMenuComponent implements OnInit {
   }
 
   sellPint(keg: Keg, pints) {
-    keg.pintsLeft -= pints
+    keg.pintsLeft -= pints;
   }
 
-  pintsRunningOut(keg){
+  pintsRunningOut(keg) {
     if (keg.pintsLeft <= 10) {
-      return "pintDanger"
+      return 'pintDanger';
     } else if (keg.pintsLeft <= 50) {
-      return "pintWarning"
+      return 'pintWarning';
     } else if (keg.pintsLeft <= 100) {
-      return "pintOkay"
+      return 'pintOkay';
     } else {
-      return "pintPlenty"
+      return 'pintPlenty';
     }
   }
 
   priceColor(keg) {
     if (keg.price <= 2) {
-      return "pintPlenty";
+      return 'pintPlenty';
     } else if (keg.price <= 4) {
-      return "pintOkay";
+      return 'pintOkay';
     } else {
-      return "pintWarning";
+      return 'pintWarning';
     }
   }
 

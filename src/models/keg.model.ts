@@ -1,6 +1,6 @@
 export class Keg {
 
-  public pintsLeft: number = 124;
+  public pintsLeft = 124;
   constructor(
     public name: string,
     public brand: string,
