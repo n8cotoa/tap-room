@@ -1,0 +1,20 @@
+{ "kegs": [{
+    "name": "Kegger",
+    "brand": "Keg & Friends",
+    "price": 3.50,
+    "alcContent": 8.5,
+    "pintsLeft": 124
+  }, {
+    "name": "Hardest Cider",
+    "brand": "Keg Land",
+    "price": 4.50,
+    "alcContent": 7.5,
+    "pintsLeft": 124
+  }, {
+    "name": "Reds Pale Ale",
+    "brand": "Are You Keggers?",
+    "price": 5.50,
+    "alcContent": 8.5,
+    "pintsLeft": 124
+  }]
+}
