@@ -1,0 +1,8 @@
+Add conditional after keg units gets to zero so that our
+keg does not have a negative amount of pints
+
+Sort all columns by name, brand, etc.
+
+Add validations for inputting new kegs (string is string, etc)
+
+Add validations for updating prior kegs (string is string, etc)
