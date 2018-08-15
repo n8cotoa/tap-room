@@ -1,0 +1,98 @@
+<div class="keg-table">
+  <div class="row">
+    <div class="col">
+      <h2>Name</h2>
+    </div>
+    <div class="col">
+      <h2>Brand</h2>
+    </div>
+    <div class="col">
+      <h2 (click)="sortPrice()">Price</h2>
+    </div>
+    <div class="col">
+      <h2 (click)="sortABV()">ABV</h2>
+    </div>
+    <div class="col">
+      <h2>Pints Left</h2>
+    </div>
+    <div class="col">
+      <h2>Edit</h2>
+    </div>
+  </div>
+  <div *ngFor="let keg of kegs" class="row">
+    <div class="col">
+      <h2><a href="#" (click)="startSale(keg)">{{keg.name}}</a></h2>
+    </div>
+    <div class="col">
+      <h2>{{keg.brand}}</h2>
+    </div>
+    <div class="col">
+      <h2 [class]="priceColor(keg)">${{keg.price}}</h2>
+    </div>
+    <div class="col">
+      <h2>{{keg.alcContent}}%</h2>
+    </div>
+    <div class="col">
+      <h2 [class]="pintsRunningOut(keg)">{{keg.pintsLeft}}</h2>
+    </div>
+    <div class="col">
+      <button type="button" class="btn btn-warning" (click)="editKeg(keg)">Edit {{keg.name}}</button>
+    </div>
+    <div class="row" *ngIf="sale && sale === keg">
+      <button (click)="sellPint(keg, 1)" class="btn btn-secondary" type="button" name="button" value="1">1 Pint</button>
+      <button (click)="sellPint(keg, 2)" class="btn btn-secondary" type="button" name="button" value="2">2 Pints</button>
+      <button (click)="sellPint(keg, 3)" class="btn btn-secondary" type="button" name="button" value="3">3 Pints</button>
+      <button (click)="sellPint(keg, 2)" class="btn btn-secondary" type="button" name="button" value="3">Growler</button>
+      <button (click)="sellPint(keg, 4)" class="btn btn-secondary" type="button" name="button" value="3">Large Growler</button>
+    </div>
+  </div>
+
+</div>
+<button type="button" class="btn btn-primary"(click)="addKeg()">Add Keg</button>
+<div *ngIf="selectedKeg">
+  <hr>
+  <form>
+    <h3>Edit {{selectedKeg.name}}</h3>
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input type="text" name="name" class="form-control" [(ngModel)]=selectedKeg.name>
+    </div>
+    <div class="form-group">
+      <label for="brand">Brand</label>
+      <input type="text" name="brand" class="form-control" [(ngModel)]=selectedKeg.brand>
+    </div>
+    <div class="form-group">
+      <label for="price">Price</label>
+      <input type="text" name="price" class="form-control" [(ngModel)]=selectedKeg.price>
+    </div>
+    <div class="form-group">
+      <label for="ABV">ABV</label>
+      <input type="text" name="alcContent" class="form-control" [(ngModel)]=selectedKeg.alcContent>
+    </div>
+    <button type="button" (click)="endEdit()">Done!</button>
+  </form>
+</div>
+
+<div *ngIf="newKeg">
+  <form>
+    <h3>Add a new keg</h3>
+    <div class="form-group">
+      <label for="newName">Name</label>
+      <input type="text" name="newName" class="form-control" [(ngModel)]=newName>
+    </div>
+    <div class="form-group">
+      <label for="newBrand">Brand</label>
+      <input type="text" name="newBrand" class="form-control" [(ngModel)]=newBrand>
+    </div>
+    <div class="form-group">
+      <label for="newPrice">Price</label>
+      <input type="text" name="newPrice" class="form-control" [(ngModel)]=newPrice>
+    </div>
+    <div class="form-group">
+      <label for="newABV">ABV</label>
+      <input type="text" name="newABV" class="form-control" [(ngModel)]=newABV>
+    </div>
+    <button type="button" (click)="addNewKeg(newName, newBrand, newPrice, newABV)">Done!</button>
+  </form>
+
+</div>

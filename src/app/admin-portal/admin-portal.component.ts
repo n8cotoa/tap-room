@@ -4,24 +4,60 @@ import { Keg } from '../../models/keg.model';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-tap-menu',
-  templateUrl: './tap-menu.component.html',
-  styleUrls: ['./tap-menu.component.css'],
+  selector: 'app-admin-portal',
+  templateUrl: './admin-portal.component.html',
+  styleUrls: ['./admin-portal.component.css'],
   providers: [KegService]
 })
-export class TapMenuComponent implements OnInit {
-
+export class AdminPortalComponent implements OnInit {
   kegs: any[];
   selectedKeg = null;
   newKeg = null;
   sale = null;
   ABVsorted = null;
   priceSorted = null;
-
   constructor(private router: Router, private kegService: KegService) { }
 
   ngOnInit() {
     this.kegService.getKegs().subscribe(kegs => this.kegs = kegs)
+  }
+
+  editKeg(keg: Keg) {
+    if (this.selectedKeg === keg) {
+      this.selectedKeg = null;
+    } else {
+    this.selectedKeg = keg;
+    }
+  }
+
+  endEdit() {
+    this.selectedKeg = null;
+  }
+
+  addKeg() {
+    this.newKeg = true;
+  }
+
+  addNewKeg(name: string, brand: string, price: number, alcContent: number) {
+    if (name === undefined || brand === undefined || price === undefined || alcContent === undefined) {
+      this.newKeg = null;
+    } else {
+      const keg: Keg = new Keg(name, brand, price, alcContent);
+      this.kegService.addKeg(keg);
+      this.newKeg = null;
+    }
+  }
+
+  startSale(keg: Keg) {
+    if (this.sale === keg) {
+      this.sale = null;
+    } else {
+    this.sale = keg;
+    }
+  }
+
+  sellPint(keg: Keg, pints) {
+    keg.pintsLeft -= pints;
   }
 
   pintsRunningOut(keg) {
