@@ -18,4 +18,23 @@ export class KegService {
   addKeg(newKeg: Keg) {
     this.kegs.push(newKeg);
   }
+
+  getKegByID(kegId: string) {
+    return this.database.object('kegs/' + kegId);
+  }
+
+  updateKeg(selectedKeg) {
+    let kegInFirebase = this.getKegByID(selectedKeg.$key);
+    kegInFirebase.update({
+      alcContent: selectedKeg.alcContent,
+      name: selectedKeg.name,
+      brand: selectedKeg.brand,
+      price: selectedKeg.price
+    });
+  }
+
+  updatePints(localUpdateKeg) {
+    let kegInFirebase = this.getKegByID(localUpdateKeg.$key);
+    kegInFirebase.update({ pintsLeft: localUpdateKeg.pintsLeft });
+  }
 }

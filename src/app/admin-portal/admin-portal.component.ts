@@ -32,7 +32,8 @@ export class AdminPortalComponent implements OnInit {
     }
   }
 
-  endEdit() {
+  endEdit(selectedKeg) {
+    this.kegService.updateKeg(selectedKeg)
     this.selectedKeg = null;
   }
 
@@ -59,8 +60,14 @@ export class AdminPortalComponent implements OnInit {
   }
 
   sellPint(keg: Keg, pints) {
-    keg.pintsLeft -= pints;
+    if (keg.pintsLeft <= 0) {
+      keg.pintsLeft = 0
+    } else {
+      keg.pintsLeft -= pints;
+      this.kegService.updatePints(keg);
+    }
   }
+
 
   pintsRunningOut(keg) {
     if (keg.pintsLeft <= 10) {
