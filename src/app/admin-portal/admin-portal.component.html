@@ -69,7 +69,8 @@
       <label for="ABV">ABV</label>
       <input type="text" name="alcContent" class="form-control" [(ngModel)]=selectedKeg.alcContent>
     </div>
-    <button type="button" (click)="endEdit(selectedKeg)">Done!</button>
+    <button type="button" class="btn btn-success" (click)="endEdit(selectedKeg)">Done!</button>
+    <button type="button" class="btn btn-danger" (click)="deleteKeg(selectedKeg)">Delete This Keg</button>
   </form>
 </div>
 

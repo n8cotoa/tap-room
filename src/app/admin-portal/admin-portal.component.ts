@@ -37,6 +37,11 @@ export class AdminPortalComponent implements OnInit {
     this.selectedKeg = null;
   }
 
+  deleteKeg(keg) {
+    this.kegService.deleteKeg(keg);
+    this.selectedKeg = null;
+  }
+
   addKeg() {
     this.newKeg = true;
   }

@@ -37,4 +37,9 @@ export class KegService {
     let kegInFirebase = this.getKegByID(localUpdateKeg.$key);
     kegInFirebase.update({ pintsLeft: localUpdateKeg.pintsLeft });
   }
+
+  deleteKeg(drainedKeg) {
+    let kegInFirebase = this.getKegByID(drainedKeg.$key);
+    kegInFirebase.remove();
+  }
 }
