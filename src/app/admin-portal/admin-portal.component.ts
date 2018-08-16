@@ -16,6 +16,8 @@ export class AdminPortalComponent implements OnInit {
   sale = null;
   ABVsorted = null;
   priceSorted = null;
+  brandSorted = null;
+  nameSorted = null;
   constructor(private router: Router, private kegService: KegService) { }
 
   ngOnInit() {
@@ -99,6 +101,50 @@ export class AdminPortalComponent implements OnInit {
     } else {
       this.kegs.sort(function(a, b){return b.price -  a.price});
       this.priceSorted = null;
+    }
+  }
+
+  sortBrand() {
+    if (this.brandSorted == null) {
+      this.kegs.sort(function(a, b){
+        if (a.brand > b.brand) {
+          return -1
+        } else {
+          return 1
+        }
+      });
+      this.brandSorted = "DESC";
+    } else {
+      this.kegs.sort(function(a, b){
+        if (a.brand < b.brand) {
+          return -1
+        } else {
+          return 1
+        }
+      });
+      this.brandSorted = null;
+    }
+  }
+
+  sortName() {
+    if (this.nameSorted == null) {
+      this.kegs.sort(function(a, b){
+        if (a.name > b.name) {
+          return -1
+        } else {
+          return 1
+        }
+      });
+      this.nameSorted = "DESC";
+    } else {
+      this.kegs.sort(function(a, b){
+        if (a.name < b.name) {
+          return -1
+        } else {
+          return 1
+        }
+      });
+      this.nameSorted = null;
     }
   }
 
