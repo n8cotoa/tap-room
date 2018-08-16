@@ -12,6 +12,7 @@ import { WelcomeComponent } from './welcome/welcome.component';
 import { routing } from './app.routing';
 import { TapMenuComponent } from './tap-menu/tap-menu.component';
 import { AdminPortalComponent } from './admin-portal/admin-portal.component';
+import { NavbarComponent } from './navbar/navbar.component';
 
 export const firebaseConfig = {
   apiKey: masterFirebaseConfig.apiKey,
@@ -25,7 +26,8 @@ export const firebaseConfig = {
     AppComponent,
     WelcomeComponent,
     TapMenuComponent,
-    AdminPortalComponent
+    AdminPortalComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,

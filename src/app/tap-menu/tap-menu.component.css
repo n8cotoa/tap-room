@@ -14,3 +14,16 @@
 .pintPlenty {
   color: gold;
 }
+
+.row {
+  border: grey 1px solid;
+  padding: 5px;
+}
+
+.btn {
+  margin-top: 10px;
+}
+
+body {
+  background-color: white;
+}

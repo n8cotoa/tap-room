@@ -1,3 +1,21 @@
 .clickable {
   cursor: pointer;
 }
+
+.row, .col {
+  border: grey 1px solid;
+  padding: 5px;
+  text-align: center;
+  background-color: white;
+}
+.row h2 {
+  font-size: 2vw;
+}
+
+.btn {
+  margin-top: 10px;
+}
+
+body {
+  background-color: white;
+}

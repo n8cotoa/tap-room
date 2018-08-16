@@ -1,1 +1,16 @@
+body {
+  background-color: white;
+}
 
+.mainContainer {
+  margin: auto;
+  width: 90%;
+}
+
+h1 {
+  padding: 30px;
+  color: white;
+  font-size: 7vw;
+  text-shadow: 2px 3px grey;
+  font-family: 'Fredericka the Great', cursive;
+}
