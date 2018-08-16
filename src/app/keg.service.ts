@@ -23,6 +23,11 @@ export class KegService {
     return this.database.object('kegs/' + kegId);
   }
 
+  refillKeg(selectedKeg) {
+    let kegInFirebase = this.getKegByID(selectedKeg.$key);
+    kegInFirebase.update({ pintsLeft: 124 });
+  }
+
   updateKeg(selectedKeg) {
     let kegInFirebase = this.getKegByID(selectedKeg.$key);
     kegInFirebase.update({

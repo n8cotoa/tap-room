@@ -36,7 +36,7 @@
       <h2 [class]="pintsRunningOut(keg)">{{keg.pintsLeft}}</h2>
     </div>
     <div class="col">
-      <button type="button" class="btn btn-warning" (click)="editKeg(keg)">Edit {{keg.name}}</button>
+      <button type="button" class="btn btn-warning" (click)="editKeg(keg)">Edit</button>
     </div>
     <div class="row" *ngIf="sale && sale === keg">
       <button (click)="sellPint(keg, 1)" class="btn btn-secondary" type="button" name="button" value="1">1 Pint</button>
@@ -63,13 +63,14 @@
     </div>
     <div class="form-group">
       <label for="price">Price</label>
-      <input type="text" name="price" class="form-control" [(ngModel)]=selectedKeg.price>
+      <input type="number" name="price" class="form-control" [(ngModel)]=selectedKeg.price>
     </div>
     <div class="form-group">
       <label for="ABV">ABV</label>
-      <input type="text" name="alcContent" class="form-control" [(ngModel)]=selectedKeg.alcContent>
+      <input type="number" name="alcContent" class="form-control" [(ngModel)]=selectedKeg.alcContent>
     </div>
-    <button type="button" class="btn btn-success" (click)="endEdit(selectedKeg)">Done!</button>
+    <button type="button" class="btn btn-success" (click)="endEdit(selectedKeg)">Finish Edit</button>
+    <button type="button" class="btn btn-primary" (click)="refill(selectedKeg)">Refill Keg</button>
     <button type="button" class="btn btn-danger" (click)="deleteKeg(selectedKeg)">Delete This Keg</button>
   </form>
 </div>

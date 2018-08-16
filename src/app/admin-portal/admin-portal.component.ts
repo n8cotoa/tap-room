@@ -32,6 +32,11 @@ export class AdminPortalComponent implements OnInit {
     }
   }
 
+  refill(selectedKeg) {
+    this.kegService.refillKeg(selectedKeg);
+    this.selectedKeg = null;
+  }
+
   endEdit(selectedKeg) {
     this.kegService.updateKeg(selectedKeg)
     this.selectedKeg = null;
