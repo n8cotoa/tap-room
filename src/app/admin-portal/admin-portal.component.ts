@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { KegService } from '../keg.service';
 import { Keg } from '../../models/keg.model';
 import { Router } from '@angular/router';
+import { NavbarComponent } from '../navbar/navbar.component'
 
 @Component({
   selector: 'app-admin-portal',

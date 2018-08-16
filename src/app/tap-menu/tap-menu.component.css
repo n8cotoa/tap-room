@@ -24,6 +24,9 @@
   margin-top: 10px;
 }
 
-body {
+.row, .col {
+  border: grey 1px solid;
+  padding: 5px;
+  text-align: center;
   background-color: white;
 }
