@@ -1,16 +1,16 @@
 <div class="keg-table">
   <div class="row">
     <div class="col">
-      <h2 (click)="sortName()">Name</h2>
+      <h2 (click)="sortName()">Name &#x021D5;</h2>
     </div>
     <div class="col">
-      <h2 (click)="sortBrand()">Brand</h2>
+      <h2 (click)="sortBrand()">Brand &#x021D5;</h2>
     </div>
     <div class="col">
-      <h2 (click)="sortPrice()">Price</h2>
+      <h2 (click)="sortPrice()">Price &#x021D5;</h2>
     </div>
     <div class="col">
-      <h2 (click)="sortABV()">ABV</h2>
+      <h2 (click)="sortABV()">ABV &#x021D5;</h2>
     </div>
     <div class="col">
       <h2>Pints Left</h2>
@@ -21,7 +21,7 @@
   </div>
   <div *ngFor="let keg of kegs" class="row">
     <div class="col">
-      <h2><a href="#" (click)="startSale(keg)">{{keg.name}}</a></h2>
+      <h2 (click)="startSale(keg)" class="clickable">{{keg.name}}</h2>
     </div>
     <div class="col">
       <h2>{{keg.brand}}</h2>
