@@ -5,7 +5,7 @@ html {
 }
 
 body {
-  background: url('./img/mainBackground.svg') no-repeat;
+  background: url('./assets/img/mainBackground.svg') no-repeat;
   background-size: cover;
   font-family: 'Oswald', sans-serif;
 }
